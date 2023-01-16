@@ -21,7 +21,7 @@ def start_message(message):
     if status == 0:
         DB.add_user(user_id = user_id, username = username)
         bot.send_message(message.chat.id, "Hello, you're added to the database!\n"
-                                          "I'll send you news from the New York Times every day")
+                                          "I'll send you news from the gazeta.ru every day")
     if status == 1:
         bot.send_message(message.chat.id, "You're already recieving news from me")
 
