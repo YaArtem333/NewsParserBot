@@ -43,19 +43,6 @@ def start_message(message):
         except telebot.apihelper.ApiException:
             DB.delete_user(user_id)
 
-# Описание команды /stop
-@bot.message_handler(commands = ["stop"])
-def stop_message(message):
-
-    # Получение id пользователя в Telegram, и удаление его данных из БД при их наличии
-    user_id = message.from_user.id
-    status = DB.check_user_in_db(user_id)
-    if status == 0:
-        bot.send_message(message.chat.id, "You don't recieve any messages from me")
-    if status == 1:
-        DB.delete_user(user_id = user_id)
-        bot.send_message(message.chat.id, "You stopped me. You won't recieve any messages from me")
-
 # Команда для запуска бота
 def start_bot():
     bot.polling(none_stop=True)
